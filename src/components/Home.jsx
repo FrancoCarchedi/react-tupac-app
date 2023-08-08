@@ -1,10 +1,8 @@
 import React from 'react'
-import Layout from './Layout'
 
 export const Home = () => {
   return (
     <>
-      <Layout>
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
@@ -12,7 +10,6 @@ export const Home = () => {
           <a href="#" className="btn btn-primary">Go somewhere</a>
         </div>
       </div>
-      </Layout>
     </>
   )
 }
