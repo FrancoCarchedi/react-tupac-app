@@ -107,7 +107,9 @@ const Users = ({users = '', onDelete = () => {}, onAdd = () => {}}) => {
       </div>
     </div>
 
-    <button type="button" className="btn btn-primary" onClick={() => setOpen(true)}>Agregar usuario</button>
+    <div className="my-5 text-center">
+      <button type="button" className="btn btn-primary" onClick={() => setOpen(true)}>Agregar usuario</button>
+    </div>
     </>
   )
 }
