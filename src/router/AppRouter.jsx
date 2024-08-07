@@ -16,6 +16,7 @@ import NewStudents from "../pages/new-students/NewStudents"
 import UserDetailContainer from "../pages/users/UserDetailContainer"
 import Guide from "../pages/guide/Guide"
 import CareerDetailContainer from "../pages/careers/administrator/CareerDetailContainer"
+import SubjectsContainer from "../pages/subjects/SubjectsContainer"
 
 const AppRouter = () => {
 
@@ -40,7 +41,8 @@ const AppRouter = () => {
               <Routes>
                 <Route path="/guide" element={<Guide user={ user }/>} />
                 <Route path="/profile" element={<UserProfile user={ user }/>} />
-                <Route path="/subjects" element={<UserSubjects />} />
+                <Route path="/subjects" element={<SubjectsContainer />} />
+                {/* <Route path="/subjects" element={<UserSubjects />} /> */}
                 <Route path="/users" element={<UsersContainer />} />
                 <Route path="/users/:id" element={<UserDetailContainer />} />
                 <Route path="/careers" element={<CareersContainer />} />

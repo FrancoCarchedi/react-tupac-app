@@ -30,8 +30,6 @@ const Careers = ({ careers = [], onUpdate = () => {}, onAdd = () => {} }) => {
   const [modalUpdateOpen, setModalUpdateOpen] = useState(false);
   const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
 
-  console.log(careerToUpdateState)
-
   const handleSearch = (search) => {
     setSearchTerm(search);
   };
