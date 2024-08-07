@@ -11,3 +11,11 @@
   flex-direction: column;
 }
 
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box; /* Para usar line-clamp, se necesita esta propiedad */
+  -webkit-line-clamp: 3; /* Permite 3 líneas antes de truncar */
+  -webkit-box-orient: vertical; /* Orientación vertical para el box */
+}
+

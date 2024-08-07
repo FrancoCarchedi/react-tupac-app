@@ -1,0 +1,20 @@
+[
+  {
+    "usuarioId": 2,
+    "nombre": "Franco",
+    "apellido": "Carchedi",
+    "email": "user@example.com"
+  },
+  {
+    "usuarioId": 3,
+    "nombre": "Jorge",
+    "apellido": "Lopez",
+    "email": "user@example.com"
+  },
+  {
+    "usuarioId": 11,
+    "nombre": "Rodrigo",
+    "apellido": "Mungo",
+    "email": "user@example.com"
+  }
+]

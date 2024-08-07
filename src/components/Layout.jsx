@@ -6,7 +6,7 @@ const Layout = ({children}) => {
   return (
     <>
     <Navbar/>
-      <div className="container d-flex flex-column py-5">
+      <div className="container d-flex flex-column justify-content-center py-5 flex-grow-1">
       {children}
       </div>
     <Footer/>

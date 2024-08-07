@@ -1,8 +1,19 @@
-# React + Vite
+# Practica Profesional - Proyecto Final
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Vista PUBLICA - Lista de requerimientos:
 
-Currently, two official plugins are available:
+### Inicio
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Como usuario, quiero ver la portada de la web.
+
+### Ingresantes 2024
+
+Como usuario me gustaría consultar los requisitos de inscripción y obtener formulario de inscripción.
+
+### Carreras 
+Como usuario quiero consultar las carreras que ofrece el Tupac, y el plan de estudio de cada una.
+
+### Usuario 
+Ya estoy inscripto en una carrera, y deseo iniciar sesión con mis credenciales para ver mi historial y contexto académico. También deseo ver y actualizar la información de mi perfil, y cambiar mi contraseña si es necesario.
+
+Si soy administrador (o un rol que lo permita) me deberá aparecer un botón que diga "Administrar" y al hacer click me deberá llevar al listado de administración de Carreras.

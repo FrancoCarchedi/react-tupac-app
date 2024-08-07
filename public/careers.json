@@ -1,0 +1,130 @@
+[
+  {
+    "carreraId": 1,
+    "nombre": "Tecnicatura Superior en Análisis de Sistemas",
+    "duracion": 3,
+    "materias": [
+      {
+        "materiaId": 2,
+        "nombre": "Inglés I",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 3,
+        "nombre": "Ciencia, Tecnología y Sociedad",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 4,
+        "nombre": "Análisis Matemático I",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 5,
+        "nombre": "Álgebra",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 6,
+        "nombre": "Algoritmos y Estructuras de Datos I",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 7,
+        "nombre": "Sistemas y Organizaciones",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 8,
+        "nombre": "Arquitectura de Computadores",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 9,
+        "nombre": "Prácticas Profesionalizantes I",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 10,
+        "nombre": "Inglés II",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 11,
+        "nombre": "Análisis Matemático II",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 12,
+        "nombre": "Estadística",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 13,
+        "nombre": "Ingeniería de Software I",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 14,
+        "nombre": "Algoritmos y Estructuras de Datos II",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 15,
+        "nombre": "Sistemas Operativos",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 16,
+        "nombre": "Base de Datos",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 17,
+        "nombre": "Prácticas Profesionalizantes II",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 18,
+        "nombre": "Inglés III",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 19,
+        "nombre": "Aspectos Legales de la Profesión",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 20,
+        "nombre": "Seminario de Actualización",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 21,
+        "nombre": "Redes y Comunicaciones",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 22,
+        "nombre": "Ingeniería de Software II",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 23,
+        "nombre": "Algoritmos y Estructuras de Datos III",
+        "carreraId": 1
+      },
+      {
+        "materiaId": 24,
+        "nombre": "Prácticas Profesionalizantes III",
+        "carreraId": 1
+      }
+    ]
+  },
+  {
+    "carreraId": 2,
+    "nombre": "Profesorado de Economia",
+    "duracion": 4,
+    "materias": []
+  }
+]

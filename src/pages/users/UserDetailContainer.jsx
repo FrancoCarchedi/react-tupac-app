@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import UserDetail from './UserDetail'
 import axios from 'axios'
+import { updateUser } from '../../services/user/updateUser'
 
 const UserDetailContainer = () => {
 
@@ -31,17 +32,14 @@ const UserDetailContainer = () => {
     })
   }, [])
 
-  const addEnrollment = (idSubject, idUser) => {
-    axios.post(`https://localhost:7157/api/cursadas/`, idSubject, idUser)
-    .then(function (response) {
-      // handle success
-      console.log(response.data)
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-  }
+  const handleSubmit = async (formData) => {
+    try {
+      await updateUser(id, formData);
+      window.location.reload();
+    } catch (error) {
+      setErrorCreateState(error);
+    }
+  };
 
   return (
     <div>
@@ -49,7 +47,7 @@ const UserDetailContainer = () => {
     <div className="spinner-border">
       <span className="visually-hidden">Loading...</span>
     </div> :
-    <UserDetail user={user.data} onEnrollment={addEnrollment}/> }
+    <UserDetail user={user.data} onUpdate={handleSubmit} /> }
     </div>
   )
 }
