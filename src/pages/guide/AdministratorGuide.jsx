@@ -6,7 +6,7 @@ const AdministratorGuide = () => {
     <div className='my-5'>
       <div className="col-12 mb-5">
         <h3 className="fw-semibold mb-3">Administrador</h3>
-        <p>Como administrador puedes administrar Carreras, Materias y Usuarios</p>
+        <p>Como administrador puedes administrar Carreras, Materias, Cursadas y Usuarios.</p>
       </div>
 
       {/* Gestion de usuarios */}

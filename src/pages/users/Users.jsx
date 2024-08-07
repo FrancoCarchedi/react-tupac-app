@@ -18,6 +18,8 @@ const Users = ({ users = [], roles = [], onDelete = () => {}, onAdd = () => {} }
   const [modalCreateOpen, setModalCreateOpen] = useState(false);
   const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
 
+  console.log(formData)
+
   const handleSearch = (search) => {
     setSearchTerm(search);
   };
@@ -37,7 +39,6 @@ const Users = ({ users = [], roles = [], onDelete = () => {}, onAdd = () => {} }
     for (const key in formData) {
       data.append(key, formData[key]);
     }
-    console.log(data.entries)
     onAdd(data);
     setModalCreateOpen(false);
     setFormData({

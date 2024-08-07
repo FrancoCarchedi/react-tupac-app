@@ -1,37 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import ReactPaginate from 'react-paginate';
-
-const SUBJECT_INITIAL = {
-  nombre: "",
-  carreraId: ""
-}
 
 const SUBJECTUPDATE_INITIAL = {
   id: "",
-  nombre: "",
-  carreraId: ""
+  calificacion: 0
 }
 
-const Subjects = ({ subjects = [], onAdd = () => {}, onUpdate = () => {} }) => {
+const TeacherEnrollments = ({ enrollments = [], onUpdate = () => {} }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [subjectToCreateState, setSubjectToCreateState] = useState(SUBJECT_INITIAL);
   const [subjectToUpdateState, setSubjectToUpdateState] = useState(SUBJECTUPDATE_INITIAL);
-  const [modalCreateOpen, setModalCreateOpen] = useState(false);
   const [modalUpdateOpen, setModalUpdateOpen] = useState(false);
 
-  console.log('subjectToUpdateState', subjectToUpdateState);
+  console.log(enrollments)
 
   const handleSearch = (search) => {
     setSearchTerm(search);
-  };
-
-  const handleFormChange  = (e) => {
-    const { name, value, files } = e.target;
-    if (name === 'portrait' || name === 'plan') {
-      setSubjectToCreateState({ ...subjectToCreateState, [name]: files[0] });
-    } else {
-      setSubjectToCreateState({ ...subjectToCreateState, [name]: value });
-    }
   };
 
   const handleUpdateFormChange  = (e) => {
@@ -41,17 +24,6 @@ const Subjects = ({ subjects = [], onAdd = () => {}, onUpdate = () => {} }) => {
     } else {
       setSubjectToUpdateState({ ...subjectToUpdateState, [name]: value });
     }
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    const data = new FormData();
-    for (const key in subjectToCreateState) {
-      data.append(key, subjectToCreateState[key]);
-    }
-    onAdd(data);
-    setModalCreateOpen(false);
-    setSubjectToCreateState(SUBJECT_INITIAL);
   };
 
   const handleUpdateFormSubmit = async (e) => {
@@ -65,8 +37,8 @@ const Subjects = ({ subjects = [], onAdd = () => {}, onUpdate = () => {} }) => {
     setSubjectToUpdateState(SUBJECTUPDATE_INITIAL);
   };
 
-  const filteredData = subjects.filter((item) =>
-    item.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredData = enrollments.filter((item) =>
+    item.cursadaId.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const [currentPage, setCurrentPage] = useState(0);
@@ -90,38 +62,41 @@ const Subjects = ({ subjects = [], onAdd = () => {}, onUpdate = () => {} }) => {
             type="text"
             id="inputSearch"
             className="form-control"
-            placeholder="Buscar..."
+            placeholder="Buscar por cursada..."
             onChange={(e) => handleSearch(e.target.value)}
           />
         </div>
-        <button type="button" className="btn btn-primary" onClick={() => setModalCreateOpen(true)}>Agregar materia</button>
+        {/* <button type="button" className="btn btn-primary" onClick={() => setModalCreateOpen(true)}>Agregar materia</button> */}
       </div>
 
       {/* Listado */}
       <div className="flex-grow-1">
         <table className="table align-middle caption-top">
-          <caption>Lista de materias</caption>
+          <caption>Lista de cursadas: Docente</caption>
           <thead>
             <tr>
-              <th scope="col">Id. de la materia</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Carrera</th>
+              <th scope="col">Id. de la cursada</th>
+              <th scope="col">Materia</th>
+              <th scope="col">Alumno</th>
+              <th scope="col">Calificación</th>
+              <th scope="col">Aprobada</th>
             </tr>
           </thead>
           <tbody>
             {paginatedData.map((u) => {
               return (
-                <tr key={u.materiaId}>
-                <td>{u.materiaId}</td>
-                <td>{u.nombre}</td>
-                <td>{u.carrera.nombre}</td>
+                <tr key={u.cursadaId}>
+                <td>{u.cursadaId}</td>
+                <td>{u.materia.nombre}</td>
+                <td>{u.usuario.nombre} {u.usuario.apellido}</td>
+                <td>{u.calificacion}</td>
+                <td>{u.aprobada === true ? "Si" : "No"}</td>
                 <td className="d-flex gap-2">
                 <button type="button" className="btn btn-dark btn-sm" onClick={() => {setModalUpdateOpen(true); setSubjectToUpdateState({
-                  id: u.materiaId,
-                  nombre: u.nombre,
-                  carreraId: u.carrera.carreraId
+                  id: u.cursadaId,
+                  calificacion: u.calificacion
                 })}}>
-                  Ver detalle
+                  Calificar
                 </button>
                 {/* <button type="button" className="btn btn-danger btn-sm" onClick={() => onDelete(u.carreraId)}><i className="bi bi-trash"></i></button> */}
                 </td>
@@ -132,79 +107,38 @@ const Subjects = ({ subjects = [], onAdd = () => {}, onUpdate = () => {} }) => {
         </table>
       </div>
 
-      {/* Modal para crear materia */}
-      <div className={`modal ${modalCreateOpen == true? `d-flex` : `d-none`}`} tabIndex="-1">
-        <div className="modal-dialog w-100">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Agregar materia</h5>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => setModalCreateOpen(false)}></button>
-            </div>
-            <div className="modal-body">
-
-            <div className="mb-3">
-              <label htmlFor="nombre" className="form-label">Nombre</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="nombre"
-                  name='nombre'
-                  value={subjectToCreateState.nombre}
-                  onChange={handleFormChange}
-                />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="carreraId" className="form-label">Id. de Carrera</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="carreraId"
-                  name='carreraId'
-                  value={subjectToCreateState.carreraId}
-                  onChange={handleFormChange}
-                />
-            </div>
-
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={() => setModalCreateOpen(false)}>Cancelar</button>
-              <button type="button" disabled={Object.values(subjectToCreateState).some(property => property === "")} className="btn btn-primary" onClick={handleFormSubmit}>Guardar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Modal para actualizar materia */}
       <div className={`modal ${modalUpdateOpen == true? `d-flex` : `d-none`}`} tabIndex="-1">
         <div className="modal-dialog w-100">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">Detalle de la carrera</h5>
+              <h5 className="modal-title">Detalle de la cursada</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => setModalUpdateOpen(false)}></button>
             </div>
             <div className="modal-body">
 
             <div className="mb-3">
-              <label htmlFor="nombre" className="form-label">Nombre</label>
+              <label htmlFor="id" className="form-label">Id. de Cursada</label>
                 <input
+                  disabled
                   type="text"
                   className="form-control"
-                  id="nombre"
-                  name='nombre'
-                  value={subjectToUpdateState.nombre}
-                  onChange={handleUpdateFormChange}
+                  id="id"
+                  name='id'
+                  value={subjectToUpdateState.id}
                 />
             </div>
 
             <div className="mb-3">
-              <label htmlFor="carreraId" className="form-label">Id. de Carrera</label>
+              <label htmlFor="calificacion" className="form-label">Calificacion</label>
                 <input
-                  type="text"
+                  type="number"
+                  min={1}
+                  max={10}
                   className="form-control"
-                  id="carreraId"
-                  name='carreraId'
-                  value={subjectToUpdateState.carreraId}
+                  id="calificacion"
+                  name='calificacion'
+                  value={subjectToUpdateState.calificacion}
                   onChange={handleUpdateFormChange}
                 />
             </div>
@@ -241,4 +175,4 @@ const Subjects = ({ subjects = [], onAdd = () => {}, onUpdate = () => {} }) => {
   )
 }
 
-export default Subjects
+export default TeacherEnrollments

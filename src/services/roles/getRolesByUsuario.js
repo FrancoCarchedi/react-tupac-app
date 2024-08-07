@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getUser = async (id) => {
+export const getRolesByUsuario = async (id) => {
   try {
-    const response = await axios.get(`https://localhost:7157/api/usuarios/${id}`);
+    const response = await axios.get(`https://localhost:7157/api/roles/usuario/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching users:', error.response?.data?.title || error.message);

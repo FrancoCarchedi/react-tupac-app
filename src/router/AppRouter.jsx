@@ -7,7 +7,6 @@ import UsersContainer from "../pages/users/UsersContainer"
 import UserProfile from "../pages/profile/UserProfile"
 import { useContext } from "react"
 import { AuthContext } from "../auth/context/AuthContext"
-import UserSubjects from "../pages/profile/UserSubjects"
 import NotFound from "../components/NotFound"
 import ResetPage from "../auth/pages/ResetPage"
 import CareersPublic from "../pages/careers/public/CareersPublic"
@@ -17,6 +16,8 @@ import UserDetailContainer from "../pages/users/UserDetailContainer"
 import Guide from "../pages/guide/Guide"
 import CareerDetailContainer from "../pages/careers/administrator/CareerDetailContainer"
 import SubjectsContainer from "../pages/subjects/SubjectsContainer"
+import EnrollmentsContainer from "../pages/enrollments/EnrollmentsContainer"
+import UserEnrollmentsContainer from "../pages/profile/UserEnrollmentsContainer"
 
 const AppRouter = () => {
 
@@ -43,6 +44,8 @@ const AppRouter = () => {
                 <Route path="/profile" element={<UserProfile user={ user }/>} />
                 <Route path="/subjects" element={<SubjectsContainer />} />
                 {/* <Route path="/subjects" element={<UserSubjects />} /> */}
+                <Route path="/enrollments" element={<EnrollmentsContainer />} />
+                <Route path="/:userid/enrollments" element={<UserEnrollmentsContainer />} />
                 <Route path="/users" element={<UsersContainer />} />
                 <Route path="/users/:id" element={<UserDetailContainer />} />
                 <Route path="/careers" element={<CareersContainer />} />

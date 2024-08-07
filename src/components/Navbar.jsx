@@ -74,9 +74,11 @@ const Navbar = () => {
                   <li><NavLink className="dropdown-item" to={"/app/profile"}>Perfil</NavLink></li>
                   {/* Para ver sus materias, debe tener rol estudiante */}
                   <li>
-                    <NavLink className={`dropdown-item ${user && user.roles?.includes("Alumno") ? `d-block` : `d-none`}`} to={"/app/subjects"}>Mis Materias</NavLink>
+                    {/* <NavLink className={`dropdown-item ${user && user.roles?.includes("Alumno") ? `d-block` : `d-none`}`} to={"/app/subjects"}>Mis Materias</NavLink> */}
 
-                    <NavLink className={`dropdown-item ${user && user.roles.includes("Docente") ? `d-block` : `d-none`}`} to={"/app/enrollments"}>Cursadas</NavLink>
+                    {user &&
+                      <NavLink className={`dropdown-item ${user && ["Docente", "Alumno"].some(role => user.roles.includes(role)) ? `d-block` : `d-none`}`} to={`/app/${user.id}/enrollments/`}>Mis cursadas</NavLink>
+                    }
                   </li>
                   <li><hr className="dropdown-divider"/></li>
                   <li><button className="dropdown-item" onClick={onLogout}>Cerrar sesión</button></li>
